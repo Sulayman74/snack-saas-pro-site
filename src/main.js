@@ -11,7 +11,7 @@ const SHOWCASE_DATA = {
     desc: "Menu interactif avec customisation poussée : choix de la taille (M, L, XL, XXL), sélection des viandes halal marinées, sauces signatures, sauces fromagères et suppléments gourmands calculés en temps réel.",
     url: "https://snacking-template.web.app",
     tags: ["Customisation Multilevel", "Viandes Halal", "Suppléments Dynamiques", "Calcul Prix Direct"],
-    color: "#F97316",
+    tone: "ember",
     badge: "Parcours Commande",
   },
   fidelite: {
@@ -20,7 +20,7 @@ const SHOWCASE_DATA = {
     desc: "Effet 'Waouh' garanti pour vos clients : une carte bancaire 3D interactive animée par gyroscope sur mobile. Vos habitués cumulent des points automatiquement et présentent leur QR code au comptoir pour leurs réductions.",
     url: "https://snacking-template.web.app",
     tags: ["Carte CB 3D Réaliste", "QR Code Scannable", "Cagnotte Fidélité", "Sans Carte Papier"],
-    color: "#0077b6",
+    tone: "cyan",
     badge: "Fidélité Gamifiée",
   },
   paiement: {
@@ -29,7 +29,7 @@ const SHOWCASE_DATA = {
     desc: "Tunnel d'achat rapide pensé pour convertir : compatibilité Apple Pay, Google Pay et Stripe 3D-Secure. Le client choisit son créneau de retrait pour récupérer sa commande chaude sans faire la queue.",
     url: "https://snacking-template.web.app",
     tags: ["Apple Pay & Google Pay", "Stripe Sécurisé 3D-Secure", "Créneau Retrait", "Reçu par Email"],
-    color: "#10B981",
+    tone: "emerald",
     badge: "Conversion Maximale",
   },
   pwa: {
@@ -38,7 +38,7 @@ const SHOWCASE_DATA = {
     desc: "Vos clients installent votre application directement sur leur écran d'accueil sans passer par l'App Store ni Google Play. Évitez les 30% de commission prélevés par Apple et Google et envoyez des notifications push gratuites.",
     url: "https://snacking-template.web.app",
     tags: ["Installation 1 Clic", "Écran d'Accueil", "Notifications Push", "0% Frais App Store"],
-    color: "#8B5CF6",
+    tone: "purple",
     badge: "PWA Mobile",
   },
 };
@@ -99,11 +99,11 @@ function initRoiCalculator() {
       if (starterCard) starterCard.classList.remove("highlight-card");
       if (adviceBox) {
         adviceBox.innerHTML = `
-          <div style="display: flex; align-items: center; gap: 10px;">
-            <span style="font-size: 1.4rem;">🚀</span>
+          <div class="advice advice--pro">
+            <span class="advice-icon">🚀</span>
             <div>
-              <strong style="color: #34D399; font-size: 0.95rem;">Volume optimal atteint pour le Forfait Pro (89 €) !</strong>
-              <div style="color: #9CA3AF; font-size: 0.85rem; margin-top: 3px;">
+              <strong class="advice-title">Volume optimal atteint pour le Forfait Pro (89 €) !</strong>
+              <div class="advice-text">
                 À 8%, vous paieriez ${fmt(starterFees)}/mois. En choisissant le <strong>Forfait Pro (89 € · 0%)</strong>, vous économisez <strong>+${fmt(diffStarterPro)} de plus chaque mois</strong> tout en gardant 100% de vos ventes !
               </div>
             </div>
@@ -115,11 +115,11 @@ function initRoiCalculator() {
       if (proCard) proCard.classList.remove("highlight-card");
       if (adviceBox) {
         adviceBox.innerHTML = `
-          <div style="display: flex; align-items: center; gap: 10px;">
-            <span style="font-size: 1.4rem;">🎁</span>
+          <div class="advice advice--starter">
+            <span class="advice-icon">🎁</span>
             <div>
-              <strong style="color: #FBBF24; font-size: 0.95rem;">Formule Starter (8%) recommandée pour démarrer :</strong>
-              <div style="color: #9CA3AF; font-size: 0.85rem; margin-top: 3px;">
+              <strong class="advice-title">Formule Starter (8%) recommandée pour démarrer :</strong>
+              <div class="advice-text">
                 Pour un CA de ${fmt(ca)}, vous ne payez que ${fmt(starterFees)} (et <strong>0 € le 1er mois</strong>). Risque zéro, aucune avance de trésorerie ! Dès que vos ventes dépassent 1 100 €, basculez en Pro en 1 clic.
               </div>
             </div>
@@ -167,7 +167,7 @@ function initShowcaseTabs() {
       }
 
       if (frameEl) {
-        frameEl.style.borderColor = data.color;
+        frameEl.dataset.tone = data.tone;
       }
     });
   });
@@ -284,14 +284,12 @@ Pouvons-nous échanger sur la mise en place de ma démo gratuite sous 24h ? Merc
     }
 
     if (statusBox) {
-      statusBox.style.display = "block";
-      statusBox.style.background = "rgba(16, 185, 129, 0.15)";
-      statusBox.style.border = "1px solid rgba(16, 185, 129, 0.4)";
-      statusBox.style.color = "#34D399";
+      statusBox.hidden = false;
+      statusBox.classList.add("status--success");
       statusBox.innerHTML = `
         <strong>✅ Redirection vers WhatsApp en cours...</strong><br>
-        <span style="font-size: 0.85rem; color: #D1D5DB; display: block; margin-top: 4px;">
-          Si WhatsApp ne s'ouvre pas automatiquement, <a href="${whatsappUrl}" target="_blank" rel="noopener noreferrer" style="color: #60A5FA; text-decoration: underline; font-weight: bold;">cliquez ici pour ouvrir directement la conversation</a>.
+        <span class="form-status-sub">
+          Si WhatsApp ne s'ouvre pas automatiquement, <a href="${whatsappUrl}" target="_blank" rel="noopener noreferrer" class="form-status-link">cliquez ici pour ouvrir directement la conversation</a>.
         </span>
       `;
     }

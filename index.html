@@ -18,9 +18,7 @@
   <!-- Favicon & Apple Touch Icon (Code Crafters - Option 3 Blason Hexagonal) -->
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
   <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
-  <link rel="icon" type="image/jpeg" href="/code-crafters-logo.jpg">
   <link rel="apple-touch-icon" sizes="180x180" href="/favicon-192.png">
-  <link rel="shortcut icon" href="/favicon.png">
 
   <!-- Theme Color & Anti-FOUC Theme Preload -->
   <meta name="color-scheme" content="light dark">
@@ -34,10 +32,10 @@
     })();
   </script>
 
-  <!-- Google Fonts: Plus Jakarta Sans -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <!-- Polices auto-hébergées (sous-ensemble latin, licence OFL) : Plus Jakarta Sans (texte) + Bricolage Grotesque 800 (h1 Hero & wordmark footer).
+       Zéro origine tierce (RGPD) et chaîne critique raccourcie ; @font-face dans src/styles.css. -->
+  <link rel="preload" href="/fonts/bricolage-grotesque-800-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/plus-jakarta-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
 
   <!-- Schema.org Structured Data (JSON-LD) for SEO -->
   <script type="application/ld+json">
@@ -100,13 +98,13 @@
   <!-- 🧭 Navbar Flottante Glassmorphism -->
   <div class="navbar-wrap">
     <header class="navbar">
-      <a href="#" class="brand" aria-label="Accueil SnackSaaS Pro par Code Crafters">
-        <div class="brand-icon" style="width: 40px; height: 40px; overflow: hidden; padding: 0; background: transparent; border-radius: 10px; box-shadow: 0 4px 15px rgba(249, 115, 22, 0.3);">
-          <img src="/code-crafters-logo.jpg" alt="Logo Code Crafters - Blason Hexagonal" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px; display: block;">
+      <a href="#" class="brand" title="Accueil">
+        <div class="brand-icon brand-logo">
+          <img src="/code-crafters-logo-96.webp" alt="Logo Code Crafters - Blason Hexagonal" width="40" height="40">
         </div>
-        <div style="display: flex; flex-direction: column;">
-          <span class="brand-name" style="line-height: 1.15;">Snack<span class="gradient-text">SaaS</span> Pro</span>
-          <span style="font-size: 0.68rem; font-weight: 700; color: #F97316; letter-spacing: 0.06em; text-transform: uppercase;">Code Crafters</span>
+        <div class="brand-text">
+          <span class="brand-name">Snack<span class="gradient-text">SaaS</span> Pro</span>
+          <span class="brand-sub">Code Crafters</span>
         </div>
       </a>
 
@@ -119,10 +117,10 @@
           <li><a href="#pricing" class="nav-link">Tarifs</a></li>
           <li><a href="#faq" class="nav-link">FAQ</a></li>
           <li class="mobile-drawer-cta">
-            <a href="#showcase" class="btn btn-secondary btn-sm nav-link" style="width: 100%; justify-content: center;">📱 Tester la Démo Live</a>
+            <a href="#showcase" class="btn btn-secondary btn-sm btn-block nav-link">📱 Tester la Démo Live</a>
           </li>
           <li class="mobile-drawer-cta">
-            <a href="#contact" class="btn btn-primary btn-sm nav-link" style="width: 100%; justify-content: center;">🚀 Démo Personnalisée 48h</a>
+            <a href="#contact" class="btn btn-primary btn-sm btn-block nav-link">🚀 Démo Personnalisée 48h</a>
           </li>
         </ul>
       </nav>
@@ -146,6 +144,13 @@
   <main>
     <!-- 🚀 HERO SECTION -->
     <section class="hero" id="hero">
+      <!-- 🎨 Décor texturé : blobs braise/framboise + trame de points (purement décoratif) -->
+      <div class="hero-decor" aria-hidden="true">
+        <span class="hero-blob blob-ember"></span>
+        <span class="hero-blob blob-raspberry"></span>
+        <span class="hero-blob blob-mustard"></span>
+        <span class="hero-dots"></span>
+      </div>
       <div class="container hero-grid">
         <div class="hero-content reveal-left">
           <div class="pill pill-glow">
@@ -191,59 +196,105 @@
           <div class="floating-badge badge-1">
             <span>⚽</span>
             <div>
-              <p style="font-weight: 800; font-size: 0.85rem;">Push Soir de Match envoyé</p>
-              <p style="font-size: 0.75rem; color: #9CA3AF;">18 commandes générées en 15 min</p>
+              <p class="badge-title">Push Soir de Match envoyé</p>
+              <p class="badge-sub">18 commandes générées en 15 min</p>
             </div>
           </div>
 
-          <div class="floating-badge badge-2">
-            <span>💳</span>
-            <div>
-              <p style="font-weight: 800; font-size: 0.85rem;">Carte Fidélité 3D scannée</p>
-              <p style="font-size: 0.75rem; color: #10B981;">+1 point crédité au comptoir</p>
-            </div>
+          <div class="phone-stage">
+          <!-- 🟡 Sticker rotatif (SVG textPath) -->
+          <div class="spin-sticker" aria-hidden="true">
+            <svg viewBox="0 0 200 200" width="200" height="200">
+              <defs>
+                <path id="spin-sticker-path" d="M100,100 m-72,0 a72,72 0 1,1 144,0 a72,72 0 1,1 -144,0"></path>
+              </defs>
+              <circle cx="100" cy="100" r="96" class="spin-sticker-bg"></circle>
+              <text class="spin-sticker-text">
+                <textPath href="#spin-sticker-path" textLength="452" lengthAdjust="spacing">0 % COMMISSION • 100 % VOS CLIENTS • </textPath>
+              </text>
+            </svg>
+            <span class="spin-sticker-core">0%</span>
           </div>
+
+          <!-- 🛍️ Mascotte sac kraft « sans yeux » : SVG inline (fond transparent garanti), bord sticker via feMorphology -->
+          <figure class="mascot-sticker mascot-hero" aria-hidden="true">
+            <svg class="mascot" viewBox="0 0 200 200" width="160" height="160" focusable="false">
+              <defs>
+                <filter id="mascot-cut-hero" x="-10%" y="-10%" width="120%" height="120%" color-interpolation-filters="sRGB">
+                  <feMorphology in="SourceAlpha" operator="dilate" radius="4" result="fat"/>
+                  <feFlood class="m-edge" result="paper"/>
+                  <feComposite in="paper" in2="fat" operator="in" result="edge"/>
+                  <feMerge><feMergeNode in="edge"/><feMergeNode in="SourceGraphic"/></feMerge>
+                </filter>
+              </defs>
+              <g filter="url(#mascot-cut-hero)">
+                <ellipse class="m-deep" cx="82" cy="191" rx="13" ry="5"/>
+                <ellipse class="m-deep" cx="118" cy="191" rx="13" ry="5"/>
+                <rect class="m-dark" x="74" y="168" width="14" height="22" rx="5"/>
+                <rect class="m-dark" x="112" y="168" width="14" height="22" rx="5"/>
+                <path class="m-arm" d="M56 118 C34 126 32 148 46 160"/>
+                <circle class="m-kraft" cx="46" cy="160" r="8"/>
+                <path class="m-arm" d="M144 118 C170 124 178 142 168 154"/>
+                <rect class="m-kraft" x="50" y="56" width="100" height="124" rx="12"/>
+                <path class="m-dark" d="M50 158 H150 V168 A12 12 0 0 1 138 180 H62 A12 12 0 0 1 50 168 Z"/>
+                <rect class="m-dark" x="42" y="42" width="116" height="30" rx="9"/>
+                <path class="m-crease" d="M50 78 H150"/>
+                <rect class="m-paper" x="86" y="60" width="28" height="15" rx="3" transform="rotate(-7 100 67)"/>
+                <rect class="m-paper" x="70" y="96" width="60" height="28" rx="6"/>
+                <text class="m-label" x="100" y="116" text-anchor="middle">0 %</text>
+                <path class="m-smile" d="M80 142 C89 154 111 154 120 142"/>
+                <g transform="rotate(-14 170 140)">
+                  <rect class="m-phone" x="156" y="112" width="30" height="54" rx="7"/>
+                  <rect class="m-screen" x="159" y="117" width="24" height="44" rx="4"/>
+                  <path class="m-check" d="M165 140 l5 5 l9 -11"/>
+                </g>
+                <circle class="m-kraft" cx="168" cy="156" r="8"/>
+              </g>
+            </svg>
+          </figure>
 
           <div class="phone-mockup">
             <div class="phone-notch"></div>
             <div class="phone-screen">
               <div class="mockup-app-header">
                 <span class="mockup-app-title">O'Tacos Fusion</span>
-                <span style="font-size: 0.75rem; color: #10B981; font-weight: 700;">● Ouvert</span>
+                <span class="mockup-status">● Ouvert</span>
               </div>
 
               <!-- Carte CB 3D virtuelle -->
               <div class="mockup-card-cb">
                 <div class="mockup-cb-chip"></div>
+                <span class="mockup-cb-badge">+1 point crédité ✓</span>
                 <div class="mockup-cb-number">•••• •••• •••• 8842</div>
                 <div class="mockup-cb-footer">
                   <span>KARIM B.</span>
-                  <span style="color: #FDE68A;">8 / 10 POINTS</span>
+                  <span class="mockup-cb-points">8 / 10 POINTS</span>
                 </div>
               </div>
 
-              <div style="font-size: 0.8rem; font-weight: 800; color: #FFFFFF; margin-top: 4px;">Top Commandes Click & Collect</div>
+              <div class="mockup-section-title">Top Commandes Click & Collect</div>
 
               <div class="mockup-order-item">
                 <div>
-                  <div style="font-weight: 700; font-size: 0.82rem; color: white;">Tacos 2 Viandes</div>
-                  <div style="font-size: 0.7rem; color: #9CA3AF;">Sauce fromagère maison + Frites</div>
+                  <div class="mockup-item-name">Tacos 2 Viandes</div>
+                  <div class="mockup-item-sub">Sauce fromagère maison + Frites</div>
                 </div>
-                <span style="font-weight: 800; font-size: 0.85rem; color: #F97316;">9,50 €</span>
+                <span class="mockup-item-price">9,50 €</span>
               </div>
 
               <div class="mockup-order-item">
                 <div>
-                  <div style="font-weight: 700; font-size: 0.82rem; color: white;">Smash Burger Double</div>
-                  <div style="font-size: 0.7rem; color: #9CA3AF;">Cheddar affiné + Oignons caramélisés</div>
+                  <div class="mockup-item-name">Smash Burger Double</div>
+                  <div class="mockup-item-sub">Cheddar affiné + Oignons caramélisés</div>
                 </div>
-                <span style="font-weight: 800; font-size: 0.85rem; color: #F97316;">11,90 €</span>
+                <span class="mockup-item-price">11,90 €</span>
               </div>
 
-              <div style="margin-top: auto; padding: 12px; background: #F97316; border-radius: 12px; text-align: center; color: white; font-weight: 800; font-size: 0.85rem;">
-                Commander en 1 tap (Apple Pay)
+              <div class="mockup-cta">
+                Commander · Apple Pay
               </div>
             </div>
+          </div>
           </div>
         </div>
       </div>
@@ -265,15 +316,15 @@
         <div class="comparison-card reveal-on-scroll">
           <div class="table-scroll-hint">
             <span>👆 Glissez le tableau pour tout comparer</span>
-            <span style="font-size: 1.1rem;">⇄</span>
+            <span class="hint-arrow">⇄</span>
           </div>
           <div class="table-responsive">
             <table class="compare-table">
               <thead>
                 <tr>
-                  <th style="width: 25%;">Critère Stratégique</th>
-                  <th class="col-uber" style="width: 37%;">🔴 Plateformes Tierces (ex. Uber Eats / Deliveroo)</th>
-                  <th class="col-our" style="width: 38%;">🟢 Votre Solution Dédiée (SnackSaaS Pro)</th>
+                  <th>Critère Stratégique</th>
+                  <th class="col-uber">🔴 Plateformes Tierces (ex. Uber Eats / Deliveroo)</th>
+                  <th class="col-our">🟢 Votre Solution Dédiée (SnackSaaS Pro)</th>
                 </tr>
               </thead>
               <tbody>
@@ -328,11 +379,11 @@
         <div class="calculator-box reveal-on-scroll">
           <div class="slider-container">
             <div class="slider-val-box">
-              <span style="font-weight: 700; color: var(--text-muted);">Vos ventes mensuelles en ligne :</span>
+              <label for="ca-slider" class="slider-label">Vos ventes mensuelles en ligne :</label>
               <span id="ca-display" class="slider-number">10 000 €</span>
             </div>
             <input type="range" id="ca-slider" class="custom-range" min="1000" max="30000" step="500" value="10000">
-            <div style="display: flex; justify-content: space-between; font-size: 0.8rem; color: var(--text-dim); font-weight: 600;">
+            <div class="slider-scale">
               <span>1 000 €</span>
               <span>15 000 €</span>
               <span>30 000 €</span>
@@ -379,7 +430,7 @@
             <div>
               <span class="summary-pill">Trésorerie Sauvegardée</span>
               <h3 class="summary-title">Vous conservez <span class="gradient-text" id="net-savings-display">+2 911 €</span> de plus chaque mois</h3>
-              <p class="summary-sub">Soit <strong id="annual-savings-display" style="color: #10B981;">34 932 €</strong> réinjectés dans votre trésorerie chaque année avec le Forfait Pro !</p>
+              <p class="summary-sub">Soit <strong id="annual-savings-display" class="text-emerald">34 932 €</strong> réinjectés dans votre trésorerie chaque année avec le Forfait Pro !</p>
             </div>
             <a href="#pricing" class="btn btn-primary">Passer au 0 % Commission →</a>
           </div>
@@ -409,9 +460,9 @@
 
         <div class="showcase-display reveal-on-scroll">
           <div class="showcase-info">
-            <span id="showcase-cat" style="color: #F97316; font-weight: 800; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.05em; display: block; margin-bottom: 8px;">Expérience Commande Client</span>
+            <span id="showcase-cat" class="showcase-cat">Expérience Commande Client</span>
             <h3 id="showcase-title">Menu Digital & Customisation Tacos</h3>
-            <p id="showcase-desc" style="color: #9CA3AF; line-height: 1.7; margin-bottom: 24px;">
+            <p id="showcase-desc" class="showcase-desc">
               Menu interactif avec customisation poussée : choix de la taille (M, L, XL, XXL), sélection des viandes halal marinées, sauces signatures, sauces fromagères et suppléments gourmands calculés en temps réel.
             </p>
             <div id="showcase-tags" class="showcase-tags">
@@ -425,18 +476,18 @@
             </a>
           </div>
 
-          <div id="showcase-frame" class="showcase-preview-frame">
+          <div id="showcase-frame" class="showcase-preview-frame" data-tone="ember">
             <div class="preview-overlay">
-              <div style="font-size: 3rem; margin-bottom: 12px;">🌮</div>
-              <h4 style="font-size: 1.25rem; color: #FFFFFF; margin-bottom: 8px;">O'Tacos Fusion · Application Live</h4>
-              <p style="font-size: 0.9rem; color: #9CA3AF; max-width: 320px; margin: 0 auto 18px;">
+              <div class="preview-emoji">🌮</div>
+              <h4 class="preview-title">O'Tacos Fusion · Application Live</h4>
+              <p class="preview-text">
                 Application PWA réelle en production. Testez le parcours d'achat complet, la fidélité 3D et le paiement express.
               </p>
-              <a href="https://snacking-template.web.app" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="font-size: 0.85rem; padding: 10px 20px;">
+              <a href="https://snacking-template.web.app" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
                 Ouvrir l'application en direct ↗
               </a>
-              <div style="margin-top: 14px;">
-                <span style="font-size: 0.8rem; background: rgba(52, 211, 153, 0.15); border: 1px solid rgba(52, 211, 153, 0.4); padding: 4px 12px; border-radius: 9999px; color: #34D399; font-weight: 700;">
+              <div class="preview-status">
+                <span class="status-pill status-pill--online">
                   ● En ligne & 100% certifié
                 </span>
               </div>
@@ -445,10 +496,10 @@
         </div>
 
         <!-- 🔒 Note de Confidentialité RGPD & Partenaires -->
-        <div style="margin-top: 32px; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 16px; padding: 20px 24px; display: flex; align-items: center; gap: 16px;">
-          <span style="font-size: 1.8rem;">🔒</span>
-          <p style="margin: 0; font-size: 0.85rem; color: #9CA3AF; line-height: 1.6;">
-            <strong style="color: #FFFFFF;">Engagement de Confidentialité & Secret des Affaires :</strong> Conformément à nos accords de non-divulgation (NDA) et à la réglementation RGPD, seule l'application de notre enseigne partenaire officielle <strong>O'Tacos Fusion</strong> est présentée publiquement en démonstration. Les identités, menus, chiffres d'affaires et applications de nos autres restaurants partenaires restent strictement confidentiels et protégés.
+        <div class="notice-box">
+          <span class="notice-icon">🔒</span>
+          <p class="notice-text">
+            <strong class="text-main">Engagement de Confidentialité & Secret des Affaires :</strong> Conformément à nos accords de non-divulgation (NDA) et à la réglementation RGPD, seule l'application de notre enseigne partenaire officielle <strong>O'Tacos Fusion</strong> est présentée publiquement en démonstration. Les identités, menus, chiffres d'affaires et applications de nos autres restaurants partenaires restent strictement confidentiels et protégés.
           </p>
         </div>
       </div>
@@ -472,12 +523,12 @@
           <div class="bento-card col-span-2">
             <div>
               <div class="bento-icon">📲</div>
-              <h4>Application PWA 2-en-1 (Web + Mobile Installable)</h4>
+              <h3>Application PWA 2-en-1 (Web + Mobile Installable)</h3>
               <p>
                 Zéro passage par l'App Store ou le Google Play Store. Un simple scan de QR code sur vos boîtes ou vos flyers installe directement l'application sur le smartphone du client. Zéro mot de passe Apple ID oublié, chargement instantané en moins d'une seconde, même en 4G saturée.
               </p>
             </div>
-            <div style="display: flex; gap: 12px; margin-top: 24px; flex-wrap: wrap;">
+            <div class="tag-row">
               <span class="tag">⚡ Score PageSpeed 100/100</span>
               <span class="tag">🍏 Compatible iOS & Android</span>
               <span class="tag">📶 Mode Offline PWA</span>
@@ -488,36 +539,36 @@
           <div class="bento-card">
             <div>
               <div class="bento-icon">⚽</div>
-              <h4>Push Marketing « Soir de Match »</h4>
+              <h3>Push Marketing « Soir de Match »</h3>
               <p>
                 Le système détecte automatiquement les affiches football (Ligue des Champions, Ligue 1) et déclenche à H-2 du match une notification ciblée avec pastille rouge sur l'écran d'accueil de vos clients.
               </p>
             </div>
-            <span class="tag" style="margin-top: 18px; align-self: flex-start;">+42 % de ventes les soirs de match</span>
+            <span class="tag bento-tag">+42 % de ventes les soirs de match</span>
           </div>
 
           <!-- Carte 3 : Carte Bancaire Fidélité 3D -->
           <div class="bento-card">
             <div>
               <div class="bento-icon">💳</div>
-              <h4>Carte de Fidélité CB 3D Flip</h4>
+              <h3>Carte de Fidélité CB 3D Flip</h3>
               <p>
                 Fini les tampons carton perdus. Une carte bancaire virtuelle animée en 3D avec puce dorée au recto et QR code au verso, scannable directement en caisse pour capter les clients mangeant sur place.
               </p>
             </div>
-            <span class="tag" style="margin-top: 18px; align-self: flex-start;">Omnicanal : En ligne + Sur place</span>
+            <span class="tag bento-tag">Omnicanal : En ligne + Sur place</span>
           </div>
 
           <!-- Carte 4 : Écran Cuisine KDS & Rush -->
           <div class="bento-card col-span-2">
             <div>
               <div class="bento-icon">👨‍🍳</div>
-              <h4>Écran KDS Cuisine avec Pause de Service</h4>
+              <h3>Écran KDS Cuisine avec Pause de Service</h3>
               <p>
                 Transformez n'importe quelle tablette iPad ou Android en écran cuisine intelligent. Alertes sonores à chaque nouvelle commande, colonnes temps réel (*Attente, À préparer, Prêtes*), calcul du temps moyen d'attente et bouton « Pause Rush » en un tap pour souffler en plein coup de feu sans pénalité.
               </p>
             </div>
-            <div style="display: flex; gap: 12px; margin-top: 24px; flex-wrap: wrap;">
+            <div class="tag-row">
               <span class="tag">🔔 Sonnerie Cuisine Intégrée</span>
               <span class="tag">⏸️ Pause Rush en 1 Clic</span>
               <span class="tag">📷 Scanner QR Comptoir Intégré</span>
@@ -528,36 +579,36 @@
           <div class="bento-card">
             <div>
               <div class="bento-icon">🛵</div>
-              <h4>Interface Livreur Autonome</h4>
+              <h3>Interface Livreur Autonome</h3>
               <p>
                 Espace dédié pour vos livreurs internes avec dispatching de commandes, calcul d'itinéraire GPS en un clic (Waze / Google Maps) et photo de preuve de livraison géolocalisée.
               </p>
             </div>
-            <span class="tag" style="margin-top: 18px; align-self: flex-start;">Zéro livreur tiers externe</span>
+            <span class="tag bento-tag">Zéro livreur tiers externe</span>
           </div>
 
           <!-- Carte 6 : Paiements & Sécurité Stripe -->
           <div class="bento-card">
             <div>
               <div class="bento-icon">🔒</div>
-              <h4>Paiements Directs Stripe Connect</h4>
+              <h3>Paiements Directs Stripe Connect</h3>
               <p>
                 L'argent des commandes arrive directement sur le compte bancaire du restaurant. Compatible Apple Pay, Google Pay et CB avec sécurité bancaire 3D Secure et conformité PCI-DSS Level 1.
               </p>
             </div>
-            <span class="tag" style="margin-top: 18px; align-self: flex-start;">Virement direct sur votre IBAN</span>
+            <span class="tag bento-tag">Virement direct sur votre IBAN</span>
           </div>
 
           <!-- Carte 7 : RGPD & Fichier Client Propriétaire -->
           <div class="bento-card">
             <div>
               <div class="bento-icon">🛡️</div>
-              <h4>100 % Conforme RGPD</h4>
+              <h3>100 % Conforme RGPD</h3>
               <p>
                 Données hébergées en Europe, gestion des consentements push, opt-out conforme et export CSV en 1 clic pour votre comptable ou votre marketing direct.
               </p>
             </div>
-            <span class="tag" style="margin-top: 18px; align-self: flex-start;">Données Hébergées en UE</span>
+            <span class="tag bento-tag">Données Hébergées en UE</span>
           </div>
         </div>
       </div>
@@ -580,13 +631,13 @@
           <!-- STARTER : ZÉRO RISQUE -->
           <div class="pricing-card">
             <div>
-              <div class="pill" style="margin-bottom: 8px; font-size: 0.75rem;">1ER MOIS 100% OFFERT</div>
-              <h3 style="font-size: 1.4rem;">Starter Zéro Risque</h3>
-              <p style="font-size: 0.85rem; color: #9CA3AF; margin-top: 4px;">Idéal pour tester sans dépenser 1 centime d'avance.</p>
+              <div class="pill pill-xs">1ER MOIS 100% OFFERT</div>
+              <h3 class="pricing-title">Starter Zéro Risque</h3>
+              <p class="pricing-sub">Idéal pour tester sans dépenser 1 centime d'avance.</p>
               <div class="pricing-price">
                 0 €<span>/ mois d'abonnement</span>
               </div>
-              <p style="font-size: 0.9rem; color: #F59E0B; font-weight: 700; margin: -8px 0 16px 0;">+ 8 % de commission sur vos ventes</p>
+              <p class="pricing-commission pricing-commission--starter">+ 8 % de commission sur vos ventes</p>
               <ul class="pricing-features">
                 <li class="active">🎁 <strong>1er mois 100 % gratuit</strong> (sans CB)</li>
                 <li class="active">✔ <strong>8 % de commission</strong> (vs 30% Uber Eats)</li>
@@ -595,23 +646,23 @@
                 <li class="active">✔ Paiement Stripe direct sur votre IBAN</li>
                 <li class="active">✔ Carte de fidélité CB 3D au comptoir</li>
                 <li class="active">✔ Écran Cuisine KDS avec alertes tablettes</li>
-                <li style="color: #6B7280;">✖ Module Livreur dédié</li>
-                <li style="color: #6B7280;">✖ Pushs illimités & Soir de match auto</li>
+                <li class="disabled">✖ Module Livreur dédié</li>
+                <li class="disabled">✖ Pushs illimités & Soir de match auto</li>
               </ul>
             </div>
-            <a href="#contact" class="btn btn-secondary" style="width: 100%;">Tester 1 mois gratuitement →</a>
+            <a href="#contact" class="btn btn-secondary btn-block">Tester 1 mois gratuitement →</a>
           </div>
 
           <!-- PRO PERFORMANCE (FEATURED) -->
           <div class="pricing-card featured">
             <div class="pricing-badge">⭐ Le Plus Rentable dès 1 100 € de CA</div>
             <div>
-              <h3 style="font-size: 1.4rem; color: var(--text-main);">Pro 0 % Commission</h3>
-              <p style="font-size: 0.85rem; color: #9CA3AF; margin-top: 4px;">Pour les snacks établis qui veulent garder 100 % de leur chiffre d'affaires.</p>
+              <h3 class="pricing-title">Pro 0 % Commission</h3>
+              <p class="pricing-sub">Pour les snacks établis qui veulent garder 100 % de leur chiffre d'affaires.</p>
               <div class="pricing-price">
                 89 €<span>/ mois fixe</span>
               </div>
-              <p style="font-size: 0.9rem; color: #10B981; font-weight: 800; margin: -8px 0 16px 0;">0 % DE COMMISSION À VIE</p>
+              <p class="pricing-commission pricing-commission--zero">0 % DE COMMISSION À VIE</p>
               <ul class="pricing-features">
                 <li class="active">✔ <strong>0 % de commission sur toutes vos ventes</strong></li>
                 <li class="active">✔ Application PWA installable iOS & Android</li>
@@ -623,18 +674,18 @@
                 <li class="active">✔ Intégration complète de votre menu offerte en 48h</li>
               </ul>
             </div>
-            <a href="#contact" class="btn btn-primary" style="width: 100%;">Passer au 0 % Commission →</a>
+            <a href="#contact" class="btn btn-primary btn-block">Passer au 0 % Commission →</a>
           </div>
 
           <!-- FRANCHISE / MULTI-SITES -->
           <div class="pricing-card">
             <div>
-              <h3 style="font-size: 1.4rem;">Franchise & Réseaux</h3>
-              <p style="font-size: 0.85rem; color: #9CA3AF; margin-top: 4px;">À partir de 2 restaurants ou chaînes en développement.</p>
+              <h3 class="pricing-title">Franchise & Réseaux</h3>
+              <p class="pricing-sub">À partir de 2 restaurants ou chaînes en développement.</p>
               <div class="pricing-price">
                 149 €<span>/ mois</span>
               </div>
-              <p style="font-size: 0.9rem; color: #10B981; font-weight: 800; margin: -8px 0 16px 0;">0 % DE COMMISSION À VIE</p>
+              <p class="pricing-commission pricing-commission--zero">0 % DE COMMISSION À VIE</p>
               <ul class="pricing-features">
                 <li class="active">✔ <strong>0 % de commission sur toutes vos ventes</strong></li>
                 <li class="active">✔ Multi-établissements centralisés</li>
@@ -645,11 +696,11 @@
                 <li class="active">✔ Account Manager dédié + Support VIP 7j/7</li>
               </ul>
             </div>
-            <a href="#contact" class="btn btn-secondary" style="width: 100%;">Demander une démo Réseau</a>
+            <a href="#contact" class="btn btn-secondary btn-block">Demander une démo Réseau</a>
           </div>
         </div>
 
-        <div style="text-align: center; margin-top: 36px; color: #9CA3AF; font-size: 0.95rem;">
+        <div class="pricing-note">
           🔒 <strong>Zéro risque pour vous</strong> : 1er mois 100% offert, sans carte bancaire, sans engagement. Résiliation en 1 clic.
         </div>
       </div>
@@ -731,13 +782,13 @@
     </section>
 
     <!-- 📩 CONTACT / CALL TO ACTION FINAL -->
-    <section class="section" id="contact" style="background: linear-gradient(180deg, transparent 0%, rgba(249, 115, 22, 0.08) 100%);">
-      <div class="container reveal-on-scroll" style="max-width: 800px; text-align: center;">
-        <div class="pill pill-glow">Prêt à reprendre le contrôle ?</div>
-        <h2 class="section-title" style="margin-top: 18px;">
+    <section class="section section-contact" id="contact">
+      <div class="container container-narrow text-center reveal-on-scroll">
+        <div class="pill pill-glow">Votre démo personnalisée sous 24 h</div>
+        <h2 class="section-title">
           Lancez l'application de votre restaurant <span class="gradient-text">dès cette semaine</span>
         </h2>
-        <p class="text-lead" style="margin-bottom: 36px;">
+        <p class="text-lead contact-lead">
           Remplissez ce formulaire rapide pour recevoir votre démo interactive personnalisée avec votre logo et vos produits sous 24h.
         </p>
 
@@ -768,11 +819,11 @@
             <label for="lead-menu" class="form-label">Lien vers votre menu actuel (ou page Uber Eats / Instagram / Google)</label>
             <input type="url" id="lead-menu" placeholder="https://..." class="form-input">
           </div>
-          <button type="submit" id="lead-submit-btn" class="btn btn-primary" style="width: 100%; padding: 16px; font-size: 1.05rem; margin-top: 10px; display: flex; align-items: center; justify-content: center; gap: 8px;">
+          <button type="submit" id="lead-submit-btn" class="btn btn-primary btn-block btn-lg">
             <span>💬 Envoyer ma demande sur WhatsApp (06 17 46 22 08) →</span>
           </button>
-          <div id="lead-status" style="display: none; padding: 14px 18px; border-radius: 12px; font-size: 0.9rem; text-align: center; margin-top: 4px;"></div>
-          <p style="font-size: 0.75rem; color: var(--text-dim); text-align: center;">
+          <div id="lead-status" class="form-status" role="status" aria-live="polite" hidden></div>
+          <p class="form-privacy">
             🔒 Vos coordonnées restent strictement confidentielles. Échange direct avec notre responsable technique et commercial sur WhatsApp.
           </p>
         </form>
@@ -780,41 +831,69 @@
     </section>
   </main>
 
-  <!-- 🦶 FOOTER -->
-  <footer class="footer">
+  <!-- 🦶 FOOTER « fun » : vagues Haikei → bandeau moutarde → CTA → colonnes → wordmark géant + mascotte -->
+  <footer class="footer" id="footer">
+    <!-- 🌊 Vagues en couches (décoratif) -->
+    <svg class="footer-waves" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+      <path class="wave wave-pink" d="M0,58 C220,110 440,10 720,46 C1000,82 1220,20 1440,62 L1440,120 L0,120 Z"/>
+      <path class="wave wave-red" d="M0,82 C260,34 480,118 720,74 C960,30 1200,110 1440,76 L1440,120 L0,120 Z"/>
+      <path class="wave wave-base" d="M0,102 C240,70 520,126 780,96 C1040,66 1260,118 1440,98 L1440,120 L0,120 Z"/>
+    </svg>
+
+    <div class="footer-body">
+    <!-- 🟡 Bandeau défilant moutarde (pause au survol, figé sous prefers-reduced-motion) -->
+    <div class="footer-marquee">
+      <div class="marquee-track">
+        <span class="marquee-group">0 % commission ✦ Votre application en 48 h ✦ Données clients 100 % à vous ✦ Push « Soir de match » ✦ Apple Pay &amp; Google Pay ✦ Carte fidélité 3D ✦ Écran cuisine KDS ✦</span>
+        <span class="marquee-group" aria-hidden="true">0 % commission ✦ Votre application en 48 h ✦ Données clients 100 % à vous ✦ Push « Soir de match » ✦ Apple Pay &amp; Google Pay ✦ Carte fidélité 3D ✦ Écran cuisine KDS ✦</span>
+      </div>
+    </div>
+
     <div class="container">
+      <!-- 🚀 Dernier appel WhatsApp -->
+      <div class="footer-cta">
+        <div>
+          <h2 class="footer-cta-title">Prêt à reprendre le contrôle ?</h2>
+          <p class="footer-cta-sub">Réponse en moins de 2 h sur WhatsApp. Votre application en ligne sous 48 h.</p>
+        </div>
+        <a href="https://wa.me/33617462208?text=Bonjour%2C%20je%20souhaite%20des%20informations%20sur%20SnackSaaS%20Pro." target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+          <span>💬 Discuter sur WhatsApp</span>
+          <span>→</span>
+        </a>
+      </div>
+
       <div class="footer-grid">
         <div>
-          <div class="brand" style="margin-bottom: 14px;">
-            <div class="brand-icon" style="width: 48px; height: 48px; overflow: hidden; padding: 0; background: transparent; border-radius: 12px; box-shadow: 0 4px 15px rgba(249, 115, 22, 0.25);">
-              <img src="/code-crafters-logo.jpg" alt="Logo Code Crafters - Blason Hexagonal" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px; display: block;">
+          <div class="brand footer-brand">
+            <div class="brand-icon brand-logo brand-logo--lg">
+              <img src="/code-crafters-logo-96.webp" alt="Logo Code Crafters - Blason Hexagonal" width="48" height="48" loading="lazy">
             </div>
-            <div>
-              <span class="brand-name" style="display: block; line-height: 1.15;">Snack<span class="gradient-text">SaaS</span> Pro</span>
-              <span style="font-size: 0.72rem; color: #F97316; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase;">Propulsé par Code Crafters</span>
+            <div class="brand-text">
+              <span class="brand-name">Snack<span class="gradient-text">SaaS</span> Pro</span>
+              <span class="brand-sub">Propulsé par Code Crafters</span>
             </div>
           </div>
-          <p style="color: var(--text-muted); font-size: 0.9rem; max-width: 380px; line-height: 1.6;">
+          <p class="footer-desc">
             L'écosystème Click & Collect et PWA propriétaire pour les commerces de bouche et la restauration rapide. Reprenez votre indépendance face aux géants de la livraison.
           </p>
-          <div style="margin-top: 14px; display: inline-flex; align-items: center; gap: 8px; font-size: 0.8rem; color: #F97316; background: rgba(249, 115, 22, 0.08); border: 1px solid rgba(249, 115, 22, 0.25); padding: 6px 12px; border-radius: 99px; font-weight: 700;">
+          <div class="pill pill-xs footer-pill">
             <span>⚡ Édité par Code Crafters (EI)</span>
           </div>
         </div>
 
         <div>
-          <h4 style="font-size: 1rem; margin-bottom: 14px; color: var(--text-main);">Application Démo</h4>
-          <ul style="list-style: none; display: flex; flex-direction: column; gap: 8px; font-size: 0.9rem;">
-            <li><a href="https://snacking-template.web.app" target="_blank" rel="noopener noreferrer" style="color: var(--text-muted); text-decoration: none;">🌮 O'Tacos Fusion (Live) ↗</a></li>
-            <li><a href="#showcase" style="color: var(--text-muted); text-decoration: none;">📱 Tester la PWA en Direct</a></li>
-            <li><span style="color: #6B7280; font-size: 0.85rem;">🔒 Autres snacks sous NDA</span></li>
-            <li><a href="#contact" style="color: #34D399; font-weight: 700; text-decoration: none;">🚀 Démo Personnalisée 48h ↗</a></li>
+          <h3 class="footer-heading">Application Démo</h3>
+          <ul class="footer-links">
+            <li><a href="https://snacking-template.web.app" target="_blank" rel="noopener noreferrer">🌮 O'Tacos Fusion (Live) ↗</a></li>
+            <li><a href="#showcase">📱 Tester la PWA en Direct</a></li>
+            <li><span class="footer-muted">🔒 Autres snacks sous NDA</span></li>
+            <li><a href="#contact" class="footer-link-accent">🚀 Démo Personnalisée 48h ↗</a></li>
           </ul>
         </div>
 
         <div>
-          <h4 style="font-size: 1rem; margin-bottom: 14px; color: var(--text-main);">Légal & Société</h4>
-          <ul style="list-style: none; display: flex; flex-direction: column; gap: 8px; font-size: 0.9rem; color: var(--text-muted);">
+          <h3 class="footer-heading">Légal & Société</h3>
+          <ul class="footer-links">
             <li>Auto-entreprise Code Crafters (EI)</li>
             <li>100 % Conforme RGPD (UE)</li>
             <li>Sécurité Bancaire Stripe Level 1</li>
@@ -824,9 +903,9 @@
         </div>
 
         <div>
-          <h4 style="font-size: 1rem; margin-bottom: 14px; color: #FFFFFF;">Contact Direct</h4>
-          <ul style="list-style: none; display: flex; flex-direction: column; gap: 8px; font-size: 0.9rem; color: #9CA3AF;">
-            <li>💬 WhatsApp : <a href="https://wa.me/33617462208?text=Bonjour%2C%20je%20souhaite%20des%20informations%20sur%20SnackSaaS%20Pro." target="_blank" rel="noopener noreferrer" style="color: #34D399; font-weight: 800; text-decoration: underline;">06 17 46 22 08</a></li>
+          <h3 class="footer-heading">Contact Direct</h3>
+          <ul class="footer-links">
+            <li>💬 WhatsApp : <a href="https://wa.me/33617462208?text=Bonjour%2C%20je%20souhaite%20des%20informations%20sur%20SnackSaaS%20Pro." target="_blank" rel="noopener noreferrer" class="footer-link-accent footer-link-underline">06 17 46 22 08</a></li>
             <li>⚡ Réponse : Moins de 2h</li>
             <li>🚀 Mise en ligne : 48h chrono</li>
             <li>📍 Annecy / France entière</li>
@@ -838,6 +917,44 @@
         <span>© 2026 SnackSaaS Pro. Tous droits réservés.</span>
         <span>Conçu pour libérer les restaurateurs des commissions abusives.</span>
       </div>
+    </div>
+
+    <!-- 🔠 Wordmark géant détouré, rogné par le bas + mascotte qui salue au survol -->
+    <div class="footer-wordmark" aria-hidden="true">
+      <span class="wordmark-text">SnackSaaS</span>
+    </div>
+      <figure class="mascot-sticker mascot-footer">
+        <svg class="mascot" viewBox="0 0 200 200" width="150" height="150" focusable="false">
+          <defs>
+            <filter id="mascot-cut-footer" x="-10%" y="-10%" width="120%" height="120%" color-interpolation-filters="sRGB">
+              <feMorphology in="SourceAlpha" operator="dilate" radius="4" result="fat"/>
+              <feFlood class="m-edge" result="paper"/>
+              <feComposite in="paper" in2="fat" operator="in" result="edge"/>
+              <feMerge><feMergeNode in="edge"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+          </defs>
+          <g filter="url(#mascot-cut-footer)">
+            <ellipse class="m-deep" cx="82" cy="191" rx="13" ry="5"/>
+            <ellipse class="m-deep" cx="118" cy="191" rx="13" ry="5"/>
+            <rect class="m-dark" x="74" y="168" width="14" height="22" rx="5"/>
+            <rect class="m-dark" x="112" y="168" width="14" height="22" rx="5"/>
+            <g class="mascot-arm-wave">
+              <path class="m-arm" d="M56 116 C34 104 24 82 38 62"/>
+              <circle class="m-kraft" cx="38" cy="62" r="9"/>
+            </g>
+            <path class="m-arm" d="M144 118 C176 126 176 150 156 150"/>
+            <circle class="m-kraft" cx="156" cy="150" r="8"/>
+            <rect class="m-kraft" x="50" y="56" width="100" height="124" rx="12"/>
+            <path class="m-dark" d="M50 158 H150 V168 A12 12 0 0 1 138 180 H62 A12 12 0 0 1 50 168 Z"/>
+            <rect class="m-dark" x="42" y="42" width="116" height="30" rx="9"/>
+            <path class="m-crease" d="M50 78 H150"/>
+            <rect class="m-paper" x="86" y="60" width="28" height="15" rx="3" transform="rotate(-7 100 67)"/>
+            <rect class="m-paper" x="70" y="96" width="60" height="28" rx="6"/>
+            <text class="m-label" x="100" y="116" text-anchor="middle">0 %</text>
+            <path class="m-smile" d="M80 142 C89 154 111 154 120 142"/>
+          </g>
+        </svg>
+      </figure>
     </div>
   </footer>
 
