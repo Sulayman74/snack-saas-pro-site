@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "deploy": "npm run build && firebase deploy --only hosting --project snack-saas-pro"
+    "deploy": "npm run build && npx -y firebase-tools@latest deploy --only hosting --project snack-saas-pro"
   },
   "devDependencies": {
     "lucide": "^1.18.0",
